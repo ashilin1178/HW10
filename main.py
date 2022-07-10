@@ -4,9 +4,9 @@ from utils import load_candidates, get_all, get_by_pk, get_by_skill
 
 def main():
     app = Flask(__name__)
-
+    # Файл с кандидатами
     file_name = 'candidates.json'
-
+    # Загружаем данные из файла
     candidates = load_candidates(file_name)
 
     @app.route('/')
@@ -27,7 +27,7 @@ def main():
         """
         candidat = get_by_pk(candidates, pk)
         url = candidat['picture']
-        return f'<img scr = "({url})"<br>' \
+        return f'<img src = "{url}"><br>' \
                f'<pre>Имя кандидата - {candidat["name"]}<br>' \
                f'Позиция кандидата - {candidat["position"]}<br>' \
                f'Навыки через запятую - {candidat["skills"]}' \
