@@ -13,14 +13,18 @@ def load_candidates(file_name_: str):
     return candidates_
 
 
-def get_all(candidates_: list):
+def get_all(candidates_):
     """
     выводит данные всех кандидатов
     :param candidates_:
     :return:
     """
+    all_cadidates = ""
     for candidat in candidates_:
-        return candidat
+        all_cadidates += f'Имя кандидата - {candidat["name"]}\n' \
+                         f'Позиция кандидата - {candidat["position"]}\n' \
+                         f'Навыки через запятую - {candidat["skills"]}\n\n'
+    return all_cadidates
 
 
 def get_by_pk(candidates_, pk):
