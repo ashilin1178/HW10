@@ -1,7 +1,5 @@
 from json import load
 
-file_name = "candidates.json"
-
 
 def load_candidates(file_name_: str):
     """
@@ -21,9 +19,9 @@ def get_all(candidates_):
     """
     all_cadidates = ""
     for candidat in candidates_:
-        all_cadidates += f'Имя кандидата - {candidat["name"]}\n' \
-                         f'Позиция кандидата - {candidat["position"]}\n' \
-                         f'Навыки через запятую - {candidat["skills"]}\n\n'
+        all_cadidates += f'Имя кандидата - {candidat["name"]}<br>' \
+                         f'Позиция кандидата - {candidat["position"]}<br>' \
+                         f'Навыки через запятую - {candidat["skills"]}<br><br>'
     return all_cadidates
 
 
@@ -41,7 +39,7 @@ def get_by_pk(candidates_, pk):
 
 def get_by_skill(candidates_, skill_name):
     """
-    функция возвращает кандидатов по навыку
+    функция возвращает кандидатов по заданному навыку
     :param candidates_:
     :param skill_name:
     :return:
@@ -51,9 +49,3 @@ def get_by_skill(candidates_, skill_name):
         if skill_name.lower() in candidat["skills"].lower():
             result.append(candidat)
     return result
-
-
-candidates = load_candidates(file_name)
-#get_by_skill(candidates, 'Delphi')
-print(get_by_skill(candidates, 'Python'))
-
