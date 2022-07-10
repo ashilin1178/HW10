@@ -19,33 +19,36 @@ def print_all():
 
 
 @app.route('/candidates/<int:pk>')
-def print_candidat(pk):
+def print_candidat_by_pk(pk):
     """
-    выводит данные всех кандидатов
+    выводит данные кандидата по номеру pk
+    :param pk:
     :return:
     """
     candidat = get_by_pk(candidates, pk)
-
-    return f'<img scr = ({candidat["picture"]})<br>'\
-           f'<pre>Имя кандидата - {candidat["name"]}<br>'\
-           f'Позиция кандидата - {candidat["position"]}<br>'\
-           f'Навыки через запятую - {candidat["skills"]}'\
+    url = candidat['picture']
+    return f'<img scr = "({url})"<br>' \
+           f'<pre>Имя кандидата - {candidat["name"]}<br>' \
+           f'Позиция кандидата - {candidat["position"]}<br>' \
+           f'Навыки через запятую - {candidat["skills"]}' \
            f'</pre>'
 
-@app.route('/candidates/<int:pk>')
-def print_candidat(pk):
+
+@app.route('/skills/<skill>')
+def print_candidates_by_skill(skill):
     """
-    выводит данные всех кандидатов
+    выводит кандидатов с заданным навыком
+    :param skill:
     :return:
     """
-    candidat = get_by_pk(candidates, pk)
+    candidates_with_skill = get_by_skill(candidates, skill)
+    result = ""
+    for candidat in candidates_with_skill:
+        result += f'Имя кандидата - {candidat["name"]}<br>' \
+                  f'Позиция кандидата - {candidat["position"]}<br>' \
+                  f'Навыки через запятую - {candidat["skills"]}<br><br>'
 
-
-    return f'<img scr = ({candidat["picture"]})<br>'\
-           f'<pre>Имя кандидата - {candidat["name"]}<br>'\
-           f'Позиция кандидата - {candidat["position"]}<br>'\
-           f'Навыки через запятую - {candidat["skills"]}'\
-           f'</pre>'
+    return f'<pre>{result}</pre>'
 
 
 if __name__ == "__main__":
