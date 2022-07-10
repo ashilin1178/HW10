@@ -26,7 +26,22 @@ def print_candidat(pk):
     """
     candidat = get_by_pk(candidates, pk)
 
-    return f'<img scr = {candidat["picture"]}<br>'\
+    return f'<img scr = ({candidat["picture"]})<br>'\
+           f'<pre>Имя кандидата - {candidat["name"]}<br>'\
+           f'Позиция кандидата - {candidat["position"]}<br>'\
+           f'Навыки через запятую - {candidat["skills"]}'\
+           f'</pre>'
+
+@app.route('/candidates/<int:pk>')
+def print_candidat(pk):
+    """
+    выводит данные всех кандидатов
+    :return:
+    """
+    candidat = get_by_pk(candidates, pk)
+
+
+    return f'<img scr = ({candidat["picture"]})<br>'\
            f'<pre>Имя кандидата - {candidat["name"]}<br>'\
            f'Позиция кандидата - {candidat["position"]}<br>'\
            f'Навыки через запятую - {candidat["skills"]}'\
