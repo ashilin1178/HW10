@@ -45,7 +45,11 @@ def get_by_skill(candidates_, skill_name):
     :return:
     """
     result = []
+
     for candidat in candidates_:
-        if skill_name.lower() in candidat["skills"].lower():
+        skill_ = candidat['skills'].lower().split(",")
+        if skill_name.lower() in skill_:
+            # print(skill_name)
             result.append(candidat)
+
     return result
