@@ -47,9 +47,15 @@ def get_by_skill(candidates_, skill_name):
     result = []
 
     for candidat in candidates_:
-        skill_ = candidat['skills'].lower().split(",")
-        if skill_name.lower() in skill_:
-            # print(skill_name)
+        skill_ = candidat['skills'].lower().replace(' ', '').split(",")
+        skill_name_for_if = skill_name.replace(' ', '').lower()
+
+        if skill_name_for_if in skill_:
             result.append(candidat)
 
     return result
+
+
+can = load_candidates("candidates.json")
+
+print(get_by_skill(can, 'обсуждать важные вопросы'))
