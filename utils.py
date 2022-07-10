@@ -47,7 +47,9 @@ def get_by_skill(candidates_, skill_name):
     result = []
 
     for candidat in candidates_:
+        # преобразуем строку с навыками в список и убираем пробелы
         skill_ = candidat['skills'].lower().replace(' ', '').split(",")
+        # подготавливаем запрос по скилам для условия, убираем пробелы и переводим в нижний регистр
         skill_name_for_if = skill_name.replace(' ', '').lower()
 
         if skill_name_for_if in skill_:
